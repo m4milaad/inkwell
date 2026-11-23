@@ -1,8 +1,11 @@
 // Public URL of the deployed site, e.g. https://m4milaad.github.io/inkwell
 // The deploy workflow sets it from GitHub Pages; set it yourself for a custom domain.
+// GitHub Pages reports custom domains as http://; the live site is https
 export const SITE_URL = (
   process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-).replace(/\/$/, '');
+)
+  .replace(/\/$/, '')
+  .replace(/^http:\/\/(?!localhost)/, 'https://');
 
 export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
