@@ -202,13 +202,14 @@ body.dark .dark-mode-toggle .moon {
 
 /* ---------- Workspace: canvas + inspector ---------- */
 body {
-  height: 100vh;
   display: flex;
   flex-direction: column;
 }
+/* the editor fills the first screen; the about text and footer sit below it */
 main {
-  flex: 1;
-  min-height: 0;
+  height: calc(100vh - 56px);
+  height: calc(100dvh - 56px);
+  flex: none;
 }
 .workspace {
   height: 100%;
@@ -653,6 +654,12 @@ input[type='number']::-webkit-inner-spin-button {
     height: auto;
     display: block;
   }
+  main {
+    height: auto;
+  }
+  .about {
+    padding: 40px 16px 48px;
+  }
   .workspace {
     display: block;
   }
@@ -711,6 +718,74 @@ input[type='number']::-webkit-inner-spin-button {
   font-size: 12px;
   color: var(--text-3);
   font-variant-numeric: tabular-nums;
+}
+
+.about {
+  width: 100%;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 64px 20px 72px;
+  color: var(--text-2);
+  font-size: 15px;
+  line-height: 24px;
+}
+.about h1 {
+  margin: 0 0 12px;
+  color: var(--text);
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+.about h2 {
+  margin: 40px 0 12px;
+  color: var(--text);
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: 600;
+}
+.about h3 {
+  margin: 20px 0 4px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 500;
+}
+.about p {
+  margin: 0;
+}
+.about .about-lead {
+  font-size: 17px;
+  line-height: 28px;
+}
+.about ol,
+.about ul {
+  margin: 0;
+  padding-left: 20px;
+}
+.about li + li {
+  margin-top: 6px;
+}
+.facts {
+  margin: 0;
+  border-top: 1px solid var(--hairline);
+}
+.facts div {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--hairline);
+}
+.facts dt {
+  color: var(--text);
+  font-weight: 500;
+}
+.facts dd {
+  margin: 0;
+}
+.about strong {
+  color: var(--text);
+  font-weight: 500;
 }
 
 .footer {

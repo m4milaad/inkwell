@@ -30,6 +30,10 @@ jobs:
         env:
           # "/<repo>" for a project site, "" for <user>.github.io or a custom domain
           NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          # full public URL, used for the canonical link, sitemap and share image
+          NEXT_PUBLIC_SITE_URL: ${{ steps.pages.outputs.base_url }}
+          # optional: Search Console verification code (Settings → Variables)
+          NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION: ${{ vars.GOOGLE_SITE_VERIFICATION }}
       - uses: actions/upload-pages-artifact@v3
         with:
           path: ./out

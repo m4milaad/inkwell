@@ -1,8 +1,14 @@
 import Script from 'next/script';
 import '../css/index.css';
 import '../css/features.css';
-
-const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
+import {
+  AUTHOR,
+  BASE_PATH as base,
+  DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  TITLE
+} from './site';
 
 const HANDWRITING_FONTS = [
   'The Girl Next Door',
@@ -37,18 +43,48 @@ const fontsHref =
   '&display=swap';
 
 export const metadata = {
-  title: 'Inkwell',
-  description:
-    'Inkwell turns typed notes, markdown and tables into realistic handwritten notebook pages you can download as images or PDF.',
+  // origin only: Next already prefixes the base path to generated image URLs
+  metadataBase: new URL(new URL(SITE_URL).origin),
+  title: TITLE,
+  description: DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    'text to handwriting',
+    'text to handwriting converter',
+    'handwriting generator',
+    'typed text to handwritten notes',
+    'handwritten assignment generator',
+    'handwriting font generator',
+    'notes to handwriting PDF'
+  ],
+  authors: [AUTHOR],
+  creator: AUTHOR.name,
+  category: 'productivity',
+  alternates: { canonical: `${SITE_URL}/` },
   manifest: `${base}/manifest.webmanifest`,
   icons: { icon: { url: `${base}/images/icon.svg`, type: 'image/svg+xml' } },
-  robots: { follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, 'max-image-preview': 'large' }
+  },
   openGraph: {
     type: 'website',
-    title: 'Inkwell',
-    siteName: 'Inkwell',
-    description: 'Turn typed notes into handwritten notebook pages'
+    url: `${SITE_URL}/`,
+    siteName: SITE_NAME,
+    title: TITLE,
+    description: DESCRIPTION,
+    locale: 'en_US'
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: TITLE,
+    description: DESCRIPTION
+  },
+  // Search Console "HTML tag" code, set as a repository variable for the deploy workflow
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
   other: { 'mobile-web-app-capable': 'yes' }
 };
 

@@ -32,6 +32,12 @@ Then open http://localhost:3000.
 
 The site path is set automatically: `/<repo>` for a project site, the root for `<user>.github.io` or a custom domain. To build locally for a sub-path, set `NEXT_PUBLIC_BASE_PATH=/<repo>` before `npm run build`; the site is written to `out/`.
 
+### Get it on Google
+
+1. Add the site in [Google Search Console](https://search.google.com/search-console) as a **URL prefix** property, using the HTML tag method.
+2. Copy only the `content` code from the tag into a repository variable named `GOOGLE_SITE_VERIFICATION` (**Settings → Secrets and variables → Actions → Variables**), re-run the deploy, then select **Verify**.
+3. Submit `sitemap.xml` under **Sitemaps** and request indexing for the home page.
+
 ## Built with
 
 - [Next.js](https://nextjs.org), as a static export

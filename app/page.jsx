@@ -1,6 +1,92 @@
 import Boot from './boot';
+import {
+  AUTHOR,
+  BASE_PATH as base,
+  DESCRIPTION,
+  FACTS,
+  FAQ,
+  FEATURES,
+  SITE_NAME,
+  SITE_URL,
+  STEPS,
+  SUMMARY
+} from './site';
 
-const base = process.env.NEXT_PUBLIC_BASE_PATH || '';
+// Structured data, linked by @id so search and AI engines read one connected
+// picture: who made it, what it is, how to use it, and direct answers
+const url = `${SITE_URL}/`;
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'Person',
+      '@id': `${url}#author`,
+      name: AUTHOR.name,
+      url: AUTHOR.url,
+      sameAs: [AUTHOR.url]
+    },
+    {
+      '@type': 'WebSite',
+      '@id': `${url}#website`,
+      url,
+      name: SITE_NAME,
+      inLanguage: 'en',
+      publisher: { '@id': `${url}#author` }
+    },
+    {
+      '@type': 'WebPage',
+      '@id': `${url}#webpage`,
+      url,
+      name: 'Free text to handwriting converter',
+      description: SUMMARY,
+      inLanguage: 'en',
+      isPartOf: { '@id': `${url}#website` },
+      about: { '@id': `${url}#app` },
+      dateModified: new Date().toISOString().slice(0, 10),
+      // parts a voice assistant can read aloud
+      speakable: {
+        '@type': 'SpeakableSpecification',
+        cssSelector: ['.about h1', '.about-lead']
+      }
+    },
+    {
+      '@type': 'WebApplication',
+      '@id': `${url}#app`,
+      name: SITE_NAME,
+      url,
+      description: DESCRIPTION,
+      applicationCategory: 'UtilitiesApplication',
+      operatingSystem: 'Any',
+      browserRequirements: 'Requires JavaScript',
+      inLanguage: 'en',
+      isAccessibleForFree: true,
+      featureList: FEATURES,
+      offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
+      author: { '@id': `${url}#author` }
+    },
+    {
+      '@type': 'HowTo',
+      '@id': `${url}#howto`,
+      name: 'How to convert text to handwriting',
+      totalTime: 'PT1M',
+      tool: { '@type': 'HowToTool', name: SITE_NAME },
+      step: STEPS.map((text, i) => ({
+        '@type': 'HowToStep',
+        position: i + 1,
+        text
+      }))
+    },
+    {
+      '@type': 'FAQPage',
+      '@id': `${url}#faq`,
+      mainEntity: FAQ.map(({ q, a }) => ({
+        '@type': 'Question',
+        name: q,
+        acceptedAnswer: { '@type': 'Answer', text: a }
+      }))
+    }
+  ]
+};
 
 export default function Page() {
   return (
@@ -592,6 +678,46 @@ export default function Page() {
           </aside>
         </form>
       </main>
+      <article className="about">
+        <h1>Free text to handwriting converter</h1>
+        <p className="about-lead">{SUMMARY}</p>
+
+        <h2>Inkwell at a glance</h2>
+        <dl className="facts">
+          {FACTS.map(([label, value]) => (
+            <div key={label}>
+              <dt>{label}</dt>
+              <dd>{value}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <h2>How to convert text to handwriting</h2>
+        <ol>
+          {STEPS.map((step) => (
+            <li key={step}>{step}</li>
+          ))}
+        </ol>
+
+        <h2>Why it looks real</h2>
+        <ul>
+          {FEATURES.map((feature) => (
+            <li key={feature}>{feature}</li>
+          ))}
+        </ul>
+
+        <h2>Frequently asked questions</h2>
+        {FAQ.map(({ q, a }) => (
+          <section key={q}>
+            <h3>{q}</h3>
+            <p>{a}</p>
+          </section>
+        ))}
+      </article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <footer className="footer">
         <span>© 2026 Inkwell</span>
         <span>
