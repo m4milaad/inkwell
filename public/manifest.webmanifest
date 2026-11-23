@@ -1,0 +1,16 @@
+{
+  "name": "Inkwell",
+  "short_name": "Inkwell",
+  "icons": [
+    {
+      "src": "images/icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#2a3fa0",
+  "background_color": "#e9eaee",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "Turn typed notes into handwritten notebook pages."
+}

@@ -1,0 +1,29 @@
+{
+  "name": "inkwell",
+  "version": "1.0.0",
+  "description": "Turn typed notes, markdown and tables into handwritten notebook pages.",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "npx serve out",
+    "eslint": "eslint --fix \"js/**/**.mjs\"",
+    "prettier": "prettier --write \"app/**/*.jsx\" \"js/**/**.mjs\" \"css/**.css\"",
+    "format": "npm run prettier"
+  },
+  "keywords": [],
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^7.0.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.5"
+  },
+  "private": true,
+  "author": "Milad (https://m4milaad.github.io)",
+  "dependencies": {
+    "next": "^16.4.6",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1"
+  }
+}
