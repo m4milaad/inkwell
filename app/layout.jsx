@@ -34,7 +34,8 @@ const HANDWRITING_FONTS = [
   'Playwrite IN',
   'Kalam',
   'Nanum Pen Script',
-  'Ma Shan Zheng'
+  'Ma Shan Zheng',
+  'Liu Jian Mao Cao'
 ];
 
 const fontsHref =

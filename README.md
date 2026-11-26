@@ -6,7 +6,7 @@ Paste text or markdown onto the page, pick a handwriting font, ink and paper, an
 
 ## Features
 
-- 24 hand-picked fonts that look like real people's writing (everyday print, cursive, school cursive), plus Hindi, Korean and Chinese, or upload your own `.ttf` / `.otf`
+- 25 hand-picked fonts that look like real people's writing (everyday print, cursive, school cursive), plus Hindi, Korean and Chinese, or upload your own `.ttf` / `.otf`
 - Natural variation: every word sits, tilts and inks slightly differently, like real handwriting
 - Five inks including pencil, and settings remembered between visits
 - Markdown on paste: headings, bold, italic, strikethrough, lists, checklists, quotes, code blocks

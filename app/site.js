@@ -12,7 +12,7 @@ export const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 export const SITE_NAME = 'Inkwell';
 export const TITLE = 'Inkwell: Free Text to Handwriting Converter';
 export const DESCRIPTION =
-  'Convert typed text into realistic handwriting on ruled notebook paper. 24 natural handwriting fonts, markdown and tables, multi-page PDF export. Free, no sign-up, runs in your browser.';
+  'Convert typed text into realistic handwriting on ruled notebook paper. 25 natural handwriting fonts, markdown and tables, multi-page PDF export. Free, no sign-up, runs in your browser.';
 
 export const AUTHOR = { name: 'Milad', url: 'https://m4milaad.github.io' };
 
@@ -25,7 +25,7 @@ export const FACTS = [
   ['Price', 'Free, no account, no watermark'],
   ['Works on', 'Any modern browser, desktop or phone'],
   ['Privacy', 'Runs fully in the browser; text is never uploaded'],
-  ['Fonts', '24 handwriting fonts, or upload your own .ttf / .otf'],
+  ['Fonts', '25 handwriting fonts, or upload your own .ttf / .otf'],
   ['Languages', 'Latin scripts, plus Hindi, Korean and Chinese fonts'],
   ['Input', 'Plain text, markdown and tables'],
   ['Export', 'JPG per page or one multi-page PDF'],
@@ -89,7 +89,7 @@ export const FAQ = [
   {
     q: 'Which handwriting fonts are included?',
     a:
-      'Everyday print such as The Girl Next Door, Reenie Beanie and Caveat; cursive such as Homemade Apple, Cedarville Cursive and La Belle Aurore; school cursive (Playwrite IN); and Kalam for Hindi, Nanum Pen for Korean and Ma Shan Zheng for Chinese.'
+      'Everyday print such as The Girl Next Door, Reenie Beanie and Caveat; cursive such as Homemade Apple, Cedarville Cursive and La Belle Aurore; school cursive (Playwrite IN); and Kalam for Hindi, Nanum Pen for Korean and Ma Shan Zheng or Liu Jian Mao Cao for Chinese.'
   },
   {
     q: 'What can I download?',
