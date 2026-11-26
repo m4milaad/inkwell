@@ -89,7 +89,10 @@ function renderOutput(outputImages) {
     <div class="output-image-container" style="position: relative;">
       <button type="button" data-index="${index}" aria-label="Remove page ${n}"
         class="btn close-button close-${index}">${icon('x')}</button>
-      <img alt="Output image ${index}" src="${src}" />
+      <button type="button" class="page-open" data-index="${index}"
+        aria-label="Preview page ${n}">
+        <img alt="Output image ${index}" src="${src}" />
+      </button>
       <div class="page-tools">
         <span class="page-number">${String(n).padStart(2, '0')}</span>
         <div class="tool-group">

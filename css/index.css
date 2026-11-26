@@ -810,3 +810,32 @@ input[type='number']::-webkit-inner-spin-button {
 .dialog-foot a:hover {
   color: var(--accent);
 }
+
+/* ---------- Page preview ---------- */
+.page-open {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: zoom-in;
+}
+.page-open:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+.preview-dialog {
+  width: min(760px, calc(100vw - 32px));
+}
+.preview-body {
+  padding: 16px;
+  background: var(--canvas);
+  overflow: auto;
+}
+.preview-body img {
+  display: block;
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+  margin: 0 auto;
+  box-shadow: var(--page-shadow);
+}

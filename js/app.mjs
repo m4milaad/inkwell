@@ -206,6 +206,47 @@ helpDialog.addEventListener('click', (e) => {
   if (e.target === helpDialog) helpDialog.close();
 });
 
+/** Click a generated page to see it large; arrow keys move between pages. */
+const previewDialog = document.querySelector('#preview-dialog');
+let previewIndex = 0;
+const showPreview = (index) => {
+  const pages = [...document.querySelectorAll('#output .page-open img')];
+  if (!pages.length) return previewDialog.close();
+  previewIndex = (index + pages.length) % pages.length;
+  const { src } = pages[previewIndex];
+  const n = previewIndex + 1;
+  previewDialog.querySelector('#preview-image').src = src;
+  previewDialog.querySelector('#preview-image').alt = `Page ${n}`;
+  previewDialog.querySelector(
+    '#preview-title'
+  ).textContent = `Page ${n} of ${pages.length}`;
+  const download = previewDialog.querySelector('#preview-download');
+  download.href = src;
+  download.download = `page-${n}.jpg`;
+  if (!previewDialog.open) previewDialog.showModal();
+};
+document.querySelector('#output').addEventListener('click', (e) => {
+  const open = e.target.closest('.page-open');
+  if (open) showPreview(Number(open.dataset.index));
+});
+previewDialog
+  .querySelectorAll('[data-preview-step]')
+  .forEach((button) =>
+    button.addEventListener('click', () =>
+      showPreview(previewIndex + Number(button.dataset.previewStep))
+    )
+  );
+previewDialog
+  .querySelector('[data-close-preview]')
+  .addEventListener('click', () => previewDialog.close());
+previewDialog.addEventListener('click', (e) => {
+  if (e.target === previewDialog) previewDialog.close();
+});
+previewDialog.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowLeft') showPreview(previewIndex - 1);
+  if (e.key === 'ArrowRight') showPreview(previewIndex + 1);
+});
+
 /** Show the variation amount next to its slider. */
 const variationInput = document.querySelector('#variation');
 const showVariation = () =>

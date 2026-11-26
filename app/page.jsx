@@ -832,6 +832,61 @@ export default function Page() {
         </div>
       </dialog>
 
+      {/* Generated page preview */}
+      <dialog
+        className="help-dialog preview-dialog"
+        id="preview-dialog"
+        aria-labelledby="preview-title"
+      >
+        <div className="dialog-head">
+          <h2 id="preview-title">Page 1</h2>
+          <div className="tool-group">
+            <button
+              type="button"
+              className="btn btn-ghost btn-icon"
+              data-preview-step="-1"
+              aria-label="Previous page"
+            >
+              <svg className="icon">
+                <use href="#i-left" />
+              </svg>
+            </button>
+            <button
+              type="button"
+              className="btn btn-ghost btn-icon"
+              data-preview-step="1"
+              aria-label="Next page"
+            >
+              <svg className="icon">
+                <use href="#i-right" />
+              </svg>
+            </button>
+            <a
+              className="btn btn-ghost btn-icon"
+              id="preview-download"
+              aria-label="Download this page"
+            >
+              <svg className="icon">
+                <use href="#i-download" />
+              </svg>
+            </a>
+            <button
+              type="button"
+              className="btn btn-ghost btn-icon"
+              data-close-preview=""
+              aria-label="Close preview"
+            >
+              <svg className="icon">
+                <use href="#i-x" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div className="preview-body">
+          <img id="preview-image" alt="" />
+        </div>
+      </dialog>
+
       {/* Draw popup */}
       <section
         className="draw-container popup-container"
